@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>知途家教</title>
+	<link rel="stylesheet" href="./Swiper-3.4.2/dist/css/swiper.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.js"></script>
+	<script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/index.css" type="text/css">
+	<!-- /*外部样式表*/ -->
+</head>
+<body>
+	<div id="main">
+		<div class="top">
+			<div class="top-bar">
+				<div class="top-left">知途家教</div>
+				<div class="user">我的</div>
+			</div>	
+		</div>
+		<div class="pic-list">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<a href="javascript:void(0);" class="swiper-slide" v-for="itemOne in bannerList">
+						<img :src="itemOne.image" alt="">
+					</a>
+					<!-- <a href="javascript:void(0);" class="swiper-slide">
+						<img src="./image/a910d180gy1ffe2cb2oapj21gn0u04p3.jpg" alt="">
+					</a> -->
+				</div>
+				<div class="subject">
+					<table width="100%" border="0" cellpadding="0" cellspacing="0">
+						<tr >
+							<td class="col-xs-2" v-for="items in subjectList">
+								<a :href="'./subject.html?id='+items.id+'&name='+items.name">
+									<img :src="items.icon" alt="">
+									<span class="name">{{ items.name }}</span>
+								</a>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="swiper-pagination">
+				</div>
+			</div>
+		</div>
+		<div class="teacher">
+			<div class="teacher-bar">
+				<p>热门教师</p>
+			</div>
+			<div class="person">
+				<div class="person-bar" v-for="item in teacherList">
+					<a :href="'./details.html?id='+item.id" class="jump" style="display:block;">
+						<div class="bar">	
+							<div class="ms"><img :src="item.image" alt=""></div>
+							<div class="introduce">
+								<p class="name">
+									<span class="chen"> {{ item.name }}</span>
+									<span class="teach-one">{{ item.subject[0].label }}</span>
+									<span class="teach"> {{ item.grade[0].label }}</span>
+									<span class="hour">已授200课时</span>
+								</p>
+								<p class="add">9年教龄</p>
+								<p class="work">
+									<span>{{ item.type[0].label }}</span>
+									<span>已认证</span>
+									<span>明星教师</span>
+								</p>
+							</div>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./js/vue.js"></script>
+	<script src="./Swiper-3.4.2/dist/js/swiper.min.js"></script>
+</body>
+</html>

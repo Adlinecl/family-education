@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title>Subject</title>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.14/dist/vue.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+        <script type="text/javascript" src="./js/jquery-3.2.0.min.js"></script>
+        <link rel="stylesheet" href="./css/subject.css" type="text/css">
+    </head>
+    <body>
+        <div id="app">
+    		<ul class="search-bar clearfix">
+        		<li @click="clickGrade" :class="isShowGrade ? 'selected' : ''">{{ grade }}
+                    <i></i>
+                </li>
+        		<li @click="clickSubject" :class="isShowSubject ? 'selected' : ''">{{ subject }}
+                    <i></i>
+                </li>
+        		<li @click="clickType" :class="isShowType ? 'selected' : ''">{{ teacherType }}
+                    <i></i>
+                </li>
+        	</ul>
+        	<div v-if="condition" class="tips" :class="isShowAllSelect ? 'show' : 'hide'">
+        		<div class="box" :class="isShowGrade ? 'show' : 'hide'">
+        			<span  :class="item.isSelected ? 'selected' : ''" v-for="item in condition.grade" @click="clickItem(item)">{{ item.label }}</span>
+        		</div>
+                <div class="box" :class="isShowSubject ? 'show' : 'hide'">
+                    <span :class="item.isSelected ? 'selected' : ''" v-for="item in condition.subject" @click="clickItem(item)">{{ item.label }}</span>
+                </div>
+                <div class="box" :class="isShowType ? 'show' : 'hide'">
+                    <span :class="item.isSelected ? 'selected' : ''" v-for="item in condition.type" @click="clickItem(item)">{{ item.label }}</span>
+                </div>
+        	</div>
+            <div class="teacher" v-for="item in list">
+                <a v-bind:href="'./details.html?id='+item.id">
+                    <img :src="item.image">
+                    <span class="chen">{{ item.name }}</span>
+                    <span class="math">{{ item.subject[0].label }}</span> 
+                    <span class="level">{{ item.grade[0].label }}</span>
+                    <span class="time">已售200课时</span>
+                    <p>{{ item.teach_year }}年教龄</p>
+                    <div class="introduced">
+                        <img src="./image/下载 (3).png">
+                        <span>{{ item.type[0].label }}</span>
+                        <img src="./image/下载 (3).png">
+                        <span>已认证</span>
+                        <img src="./image/下载 (3).png">
+                        <span>{{ item.type[0].label }}</span>
+                    </div> 
+                </a>
+            </div>
+        </div>
+    <script type="text/javascript" src="./js/subject.js"></script>
+    </body>
+</html>
